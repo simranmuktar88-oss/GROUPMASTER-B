@@ -1,21 +1,17 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Student</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-
-
     <div class="row justify-content-center">
         <div class="col-md-6">
 
             <div class="card shadow">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Add New Student</h4>
+                    <h4 class="mb-0">Update Student</h4>
                 </div>
 
                 <div class="card-body">
@@ -24,38 +20,38 @@
 
                         <div class="mb-3">
                             <label class="form-label">Full Name</label>
-                            <input type="text" name="name" class="form-control" required>
+                            <input type="text" name="name" class="form-control" Value="{{ student.name }}" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Course</label>
                             <select name="course" class="form-select" required>
-                                <option value="">Select Course</option>
-                                <option value="Computer Science">Computer Science</option>
-                                <option value="Information Technology">Information Technology</option>
-                                <option value="Software Engineering">Software Engineering</option>
-                                <option value="Web Development">Web Development</option>
-                                <option value="Data Science">Data Science</option>
+                                <option value="">diabled select>{% if student.course == ''%} selected{% endif %}Select Course</option>
+                                <option value= {% if student.course == "Computer Science" %}selected{% endif %}>Computer Science</option>
+                                <option value="Information Technology" {% if student.course == "Information Technology" %}selected{% endif %}>Information Technology</option>
+                                <option value="Software Engineering" {% if student.course == "Software Engineering" %}selected{% endif %}>Software Engineering</option>
+                                <option value="Web Development" {% if student.course == "Web Development" %}selected{% endif %}>Web Development</option>
+                                <option value="Data Science" {% if student.course == "Data Science" %}selected{% endif %}>Data Science</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Age</label>
-                            <input type="number" name="age" class="form-control" required>
+                            <input type="number" name="age" class="form-control" Value="{{ student.age }}" required>
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label">Gender</label>
                             <select name="gender" class="form-select" required>
                             <option value="">Select Gender</option>
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
+                            <option value="M" {% if student.gender == "M" %}selected{% endif %}>Male</option>
+                            <option value="F" {% if student.gender == "F" %}selected{% endif %}>Female</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                              <input type="email" name="email" class="form-control" required>
+                              <input type="email" name="email" class="form-control" Value="{{ student.email }}"  required>
                         </div><div class="container mt-5">
 
                         <div class="d-flex justify-content-between">
@@ -70,6 +66,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

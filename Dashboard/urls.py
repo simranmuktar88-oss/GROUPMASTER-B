@@ -18,10 +18,15 @@ from django.contrib import admin
 from django.urls import path
 
 from Dashboard import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.dashboard, name='dashboard'),
+    path('',auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    path('register/', views.register, name='register'),
+    path('dashboard/', views.dashboard, name='dashboard'),
     path('addstudent/',views.add_student, name='add_student'),
-    path('delete-student/<int:id>/', views.delete_student, name='delete_student')
+    path('delete-student/<int:id>/', views.delete_student, name='delete_student'),
+    path('updatestudent/<int:id>/', views.update_student, name='update_student'),
+    path('logout/', views.logout_view, name='logout'),
 ]
